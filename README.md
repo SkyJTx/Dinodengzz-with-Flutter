@@ -1,9 +1,7 @@
 # RuamMitr
 
-This project combines all the previous project apps into one app by our new portal app "RuamMitr"
-
-## Feature and Member assignment
-Feature and Member assignment can be found in [this file](Feature.md)
+This project is comes from [RuamMitr app](https://github.com/Bipoeman/Softdev_2_Group-1/) as a part of that project.
+This project is Dinodengzz game app only.
 
 ## How to Clone and, Test for Yourself
 
@@ -11,20 +9,14 @@ Feature and Member assignment can be found in [this file](Feature.md)
 2. Clone this repository to your device.
 
 ```sh
-git clone "https://github.com/Bipoeman/Softdev-2-Group-1-Frontend.git"
+git clone "https://github.com/SkyJTx/Dinodengzz-with-Flutter.git"
 ```
 
-3. Open the [project's global constant](lib/global_const.dart) and change API URI.
-
-```dart
-const String api = "Your API URI";
-```
-
-4. Run to resolve dependencies
+3. Run to resolve dependencies
 
 ```sh
 flutter pub get
 ```
 
-5. Run the app by pressing [**Debug**](lib/main.dart)
-6. Enjoy developing
+4. Run the app by pressing [**Debug**](lib/main.dart)
+5. Enjoy developing

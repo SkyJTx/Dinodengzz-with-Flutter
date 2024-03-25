@@ -91,7 +91,7 @@ flutter_icons:
   ios: true
   web:
     generate: true
-  image_path: "assets/Logo/dinoLogo.png"
+  image_path: "assets/Logo/Dino_Portal_Sakura_bg.png"
 
 dev_dependencies:
   flutter_test:
