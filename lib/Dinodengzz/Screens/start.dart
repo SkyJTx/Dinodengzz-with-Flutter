@@ -1,58 +1,65 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  final VoidCallback onLevelSelectionPressed;
-  final VoidCallback onExitPressed;
-  final VoidCallback onSettingPressed;
+  final VoidCallback? onLevelSelectionPressed;
+  final VoidCallback? onExitPressed;
+  final VoidCallback? onSettingPressed;
 
   const StartScreen({
     super.key,
-    required this.onLevelSelectionPressed,
-    required this.onExitPressed,
-    required this.onSettingPressed,
+    this.onLevelSelectionPressed,
+    this.onExitPressed,
+    this.onSettingPressed,
   });
 
   static const id = 'StartScreen';
+  final _scaleValue = 0.8;
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
-          FractionallySizedBox(
-            alignment: Alignment.center,
-            widthFactor: 1,
+          SizedBox(
+            width: size.width,
+            height: size.height,
             child: Image.asset(
               "assets/images/DinoDengzz Icon/Plain background.png",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.047),
+              padding: const EdgeInsets.only(bottom: 20),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.35,
+                width: 300 * _scaleValue,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    onLevelSelectionPressed == null
+                        ? const SizedBox()
+                        :
                     CustomIconButton(
-                      imagePath:
-                          "assets/images/DinoDengzz Icon/Start button.png",
-                      onPressed: onLevelSelectionPressed,
+                      imagePath: "assets/images/DinoDengzz Icon/Start button.png",
+                      onPressed: onLevelSelectionPressed ?? () {},
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                    const SizedBox(height: 20),
+                    onSettingPressed == null
+                        ? const SizedBox()
+                        :
                     CustomIconButton(
-                      imagePath:
-                          "assets/images/DinoDengzz Icon/Setting button.png",
-                      onPressed: onSettingPressed,
+                      imagePath: "assets/images/DinoDengzz Icon/Setting button.png",
+                      onPressed: onSettingPressed ?? () {},
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                    const SizedBox(height: 20),
+                    onExitPressed == null
+                        ? const SizedBox()
+                        :
                     CustomIconButton(
-                      imagePath:
-                          "assets/images/DinoDengzz Icon/Exit button.png",
-                      onPressed: onExitPressed,
+                      imagePath: "assets/images/DinoDengzz Icon/Quit button 2.0.png",
+                      onPressed: onExitPressed ?? () {},
                     ),
                   ],
                 ),
@@ -77,24 +84,22 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double buttonWidth = MediaQuery.of(context).size.width * 0.3;
-    double buttonHeight = MediaQuery.of(context).size.height * 0.11;
-
-    return SizedBox(
-      width: buttonWidth,
-      height: buttonHeight,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.zero,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          shape: const BeveledRectangleBorder(),
-        ),
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.contain,
-          alignment: Alignment.center,
+    return IntrinsicWidth(
+      child: IntrinsicHeight(
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
+            shape: const BeveledRectangleBorder(),
+          ),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+          ),
         ),
       ),
     );
